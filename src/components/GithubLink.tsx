@@ -2,7 +2,10 @@ import { motion } from 'framer-motion'
 
 const GithubLink = () => {
   return (
-    <motion.a className="github-link" href="#" target="blank">
+    <motion.a
+      className="github-link"
+      href="https://github.com/sokolenkov/3d-configurator"
+      target="blank">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
