@@ -1,11 +1,10 @@
 import { lazy, useCallback, useEffect, useState } from 'react'
 
+import { useAppContext } from '../context'
 const Panel = lazy(() => import('./Panel'))
 const IntroText = lazy(() => import('./IntroText'))
 const GithubLink = lazy(() => import('./GithubLink'))
 const LoadingScreen = lazy(() => import('./LoadingScreen'))
-
-import { useAppContext } from '../context'
 
 const DisplayInterface = () => {
   const [isFading, setFading] = useState(true)

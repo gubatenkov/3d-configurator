@@ -35,8 +35,5 @@
     "trailingComma": "none",
     "bracketSpacing": true,
     "jsxBracketSameLine": true
-  },
-  "engines": {
-    "node": "16.0"
   }
 }

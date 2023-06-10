@@ -4,11 +4,9 @@ import { lazy, useState } from 'react'
 const PanelTab = lazy(() => import('./PanelTab'))
 const PanelItem = lazy(() => import('./PanelItem'))
 
-import { useAppContext } from '../../context'
 import { TConfig, TPanelTab, panelData } from '../../data'
 
 const Panel = () => {
-  const { updateConfig } = useAppContext()
   const [activePanel, setActivePanel] = useState<keyof TConfig | null>(null)
 
   return (
@@ -38,9 +36,6 @@ const Panel = () => {
                       key={panelItem.id}
                       index={idx}
                       activePanel={activePanel}
-                      onChange={() =>
-                        updateConfig(activePanel, panelItem.value)
-                      }
                       {...panelItem}
                     />
                   )
