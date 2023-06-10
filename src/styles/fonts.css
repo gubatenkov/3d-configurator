@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Lamacchina';
+  src: url('./fonts/Lamacchina/Lamacchina.eot');
+  src: url('./fonts/Lamacchina/Lamacchina.eot') format('embedded-opentype'),
+    url('./fonts/Lamacchina/Lamacchina.woff2') format('woff2'),
+    url('./fonts/Lamacchina/Lamacchina.woff') format('woff'),
+    url('./fonts/Lamacchina/Lamacchina.ttf') format('truetype'),
+    url('./fonts/Lamacchina/Lamacchina.svg#Lamacchina') format('svg');
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('./fonts/LatoLight/LatoLight.eot');
+  src: url('./fonts/LatoLight/LatoLight.eot') format('embedded-opentype'),
+    url('./fonts/LatoLight/LatoLight.woff2') format('woff2'),
+    url('./fonts/LatoLight/LatoLight.woff') format('woff'),
+    url('./fonts/LatoLight/LatoLight.ttf') format('truetype'),
+    url('./fonts/LatoLight/LatoLight.svg#LatoLight') format('svg');
+  font-weight: 300;
+}
