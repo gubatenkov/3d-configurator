@@ -20,8 +20,8 @@ const sounds = [sound1, sound2]
 const Main = () => {
   const { appState } = useAppContext()
   const isAudioAllowed = useMemo(
-    () => navigator.userActivation.isActive,
-    [navigator.userActivation.isActive]
+    () => navigator?.userActivation?.isActive ?? false,
+    [navigator?.userActivation?.isActive]
   )
 
   return (
