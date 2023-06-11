@@ -1,10 +1,13 @@
 import { Canvas } from '@react-three/fiber'
 import { createRoot } from 'react-dom/client'
-import { lazy, Suspense, StrictMode, useMemo } from 'react'
+import { lazy, Suspense, StrictMode } from 'react'
 import { ACESFilmicToneMapping, SRGBColorSpace } from 'three'
 
+import Audio from './components/Audio'
+import sound1 from './data/audio/intro1.mp3'
+import sound2 from './data/audio/presentation.mp3'
+
 const HUD = lazy(() => import('./components/HUD'))
-const Audio = lazy(() => import('./components/Audio'))
 const Scene = lazy(() => import('./components/Scene'))
 const Camera = lazy(() => import('./components/Camera'))
 const Cursor = lazy(() => import('./components/Cursor'))
@@ -13,9 +16,10 @@ import { ContextProvider, useAppContext } from './context'
 
 import './styles/main.css'
 
+const sounds = [sound1, sound2]
+
 const Main = () => {
   const { appState } = useAppContext()
-  const isAudioAllowed = useMemo(() => appState !== 'pending', [appState])
 
   return (
     <div className="main">
@@ -33,7 +37,7 @@ const Main = () => {
           </Camera>
         </Suspense>
       </Canvas>
-      {isAudioAllowed && <Audio />}
+      <Audio sounds={sounds} />
       <Cursor />
       <HUD />
     </div>
