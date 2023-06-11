@@ -5,15 +5,16 @@ import { useAppContext } from '../context'
 
 const Audio: FC<{ sounds: Array<string> }> = memo(
   ({ sounds: [sound1, sound2] }) => {
-    const delayMs = 1000
+    const delayMs = 500
     const { appState } = useAppContext()
     const currentSound = appState === 'presentation' ? sound2 : sound1
+    const currentVolume = appState === 'presentation' ? 0.35 : 1
     const [playSound, { sound, stop }] = useSound(currentSound, {
       interrupt: true,
       preload: true,
       autoplay: false,
       loop: true,
-      volume: 1
+      volume: currentVolume
     })
 
     useEffect(() => {
@@ -24,10 +25,10 @@ const Audio: FC<{ sounds: Array<string> }> = memo(
 
         return () => {
           setTimeout(() => stop(soundId), delayMs)
-          sound.fade(1, 0, delayMs, soundId)
+          sound.fade(currentVolume, 0, delayMs, soundId)
         }
       }
-    }, [sound, appState])
+    }, [sound, appState, currentVolume])
 
     return null
   }

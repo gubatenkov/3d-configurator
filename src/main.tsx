@@ -5,7 +5,7 @@ import { ACESFilmicToneMapping, SRGBColorSpace } from 'three'
 
 import Audio from './components/Audio'
 import sound1 from './data/audio/intro1.mp3'
-import sound2 from './data/audio/presentation.mp3'
+import sound2 from './data/audio/presentation2.mp3'
 
 const HUD = lazy(() => import('./components/HUD'))
 const Scene = lazy(() => import('./components/Scene'))
