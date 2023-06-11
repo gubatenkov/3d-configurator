@@ -28,7 +28,7 @@ const Stage: FC<StageProps> = ({ children }) => {
     <>
       {children}
       <mesh position={[0, 0, 0]} rotation={[Math.PI / -2, 0, 0]}>
-        <planeGeometry args={[150, 150]} />
+        <planeGeometry args={[175, 175]} />
         <meshStandardMaterial
           color={'black'}
           aoMap={aoMap}

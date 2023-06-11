@@ -18,8 +18,8 @@ const Intro: FC<Props> = ({ children }) => {
   }, [currentMotion])
 
   async function handleMotion() {
-    /** Controls allow to skip unnecessary
-     *  transitions between motions **/
+    // Controls allow to skip unnecessary
+    // transitions between motions
     controls.set(motions[currentMotion].from)
     // wait for the end of the current motion
     await controls.start(motions[currentMotion].to)

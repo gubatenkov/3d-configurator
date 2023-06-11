@@ -9,20 +9,13 @@ const Scene = lazy(() => import('./components/Scene'))
 const Camera = lazy(() => import('./components/Camera'))
 const Cursor = lazy(() => import('./components/Cursor'))
 
-import sound1 from './data/audio/intro1.ogg'
-import sound2 from './data/audio/presentation.mp3'
 import { ContextProvider, useAppContext } from './context'
 
 import './styles/main.css'
 
-const sounds = [sound1, sound2]
-
 const Main = () => {
   const { appState } = useAppContext()
-  const isAudioAllowed = useMemo(
-    () => navigator?.userActivation?.isActive ?? false,
-    [navigator?.userActivation?.isActive]
-  )
+  const isAudioAllowed = useMemo(() => appState !== 'pending', [appState])
 
   return (
     <div className="main">
@@ -40,7 +33,7 @@ const Main = () => {
           </Camera>
         </Suspense>
       </Canvas>
-      {isAudioAllowed && <Audio sounds={sounds} />}
+      {isAudioAllowed && <Audio />}
       <Cursor />
       <HUD />
     </div>

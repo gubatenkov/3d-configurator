@@ -10,7 +10,7 @@ const PresentationCamera: FC<Props> = ({ children }) => {
     <>
       {children}
       <PerspectiveCamera
-        position={[-28, 10, 0]}
+        position={[-28, 7, 0]}
         fov={45}
         far={100}
         near={0.1}
