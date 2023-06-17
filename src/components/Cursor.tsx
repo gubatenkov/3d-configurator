@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC, useCallback, useEffect } from 'react'
 import { motion, useSpring, useMotionValue } from 'framer-motion'
 
 const Cursor: FC = () => {
@@ -7,10 +7,13 @@ const Cursor: FC = () => {
   const X = useSpring(x, { damping: 50, stiffness: 500 })
   const Y = useSpring(y, { damping: 50, stiffness: 500 })
 
-  const moveMouse = (e: MouseEvent) => {
-    x.set(e.clientX - 34)
-    y.set(e.clientY - 34)
-  }
+  const moveMouse = useCallback(
+    (e: MouseEvent) => {
+      x.set(e.clientX - 34)
+      y.set(e.clientY - 34)
+    },
+    [x, y]
+  )
 
   useEffect(() => {
     window.addEventListener('mousemove', moveMouse)

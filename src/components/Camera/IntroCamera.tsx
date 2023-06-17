@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion-3d'
+import { ExposedData } from 'use-sound/dist/types'
 import { useAnimationControls } from 'framer-motion'
 import { PerspectiveCamera } from '@react-three/drei'
 import { FC, ReactNode, useState, useEffect } from 'react'
@@ -7,11 +8,21 @@ import { motions } from '../../data'
 
 type Props = {
   children: ReactNode
+  soundControls: ExposedData
 }
 
-const Intro: FC<Props> = ({ children }) => {
-  const [currentMotion, setCurrentMotion] = useState(0)
+const Intro: FC<Props> = ({ children, soundControls }) => {
+  const delayMs = 500
   const controls = useAnimationControls()
+  const [currentMotion, setCurrentMotion] = useState(0)
+
+  useEffect(() => {
+    const id = soundControls?.sound?.play()
+    return () => {
+      setTimeout(() => soundControls?.stop(id), delayMs)
+      soundControls?.sound?.fade(1, 0, delayMs, id)
+    }
+  }, [soundControls])
 
   useEffect(() => {
     handleMotion()

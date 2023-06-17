@@ -1,11 +1,19 @@
-import type { FC, ReactNode } from 'react'
+import { ExposedData } from 'use-sound/dist/types'
+import { useEffect, type FC, type ReactNode, memo } from 'react'
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
 
 type Props = {
   children: ReactNode
+  soundControls: ExposedData
 }
 
-const PresentationCamera: FC<Props> = ({ children }) => {
+const PresentationCamera: FC<Props> = memo(({ children, soundControls }) => {
+  useEffect(() => {
+    let id: string
+    id = soundControls?.sound?.play()
+    return () => soundControls?.stop(id)
+  }, [soundControls])
+
   return (
     <>
       {children}
@@ -32,6 +40,6 @@ const PresentationCamera: FC<Props> = ({ children }) => {
       />
     </>
   )
-}
+})
 
 export default PresentationCamera
